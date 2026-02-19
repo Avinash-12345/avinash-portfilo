@@ -26,24 +26,37 @@ import { Project } from '../../../models/resume.model.js';
         <div class="mt-auto">
           <div class="d-flex flex-wrap gap-1">
             @for (skill of project().technologies; track skill) {
-              <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3">
-                {{ skill }}
-              </span>
+            <span
+              class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3"
+            >
+              {{ skill }}
+            </span>
             }
           </div>
         </div>
       </div>
     </div>
   `,
-  styles: [`
-    .transition-hover {
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    .transition-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    }
-  `]
+  styles: [
+    `
+      .transition-hover {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+      .transition-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+      }
+      .card {
+        border: none;
+        background: #fff;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+      .card:hover {
+        transform: translateY(-10px);
+      }
+    `,
+  ],
 })
 export class ProjectCardComponent {
   // Using your Project interface for type safety
