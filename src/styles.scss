@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
+
+:root, [data-bs-theme="light"] {
+  --text-color: #212529;
+  --bg-color: #ffffff;
+  --accent-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] {
+  --text-color: #f8f9fa;
+  --bg-color: #121212;
+  --accent-color: #375a7f;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
