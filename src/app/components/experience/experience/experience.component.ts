@@ -1,8 +1,9 @@
 // src/app/components/experience/experience.component.ts
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ResumeService } from '../../../services/resume.service';
 import { CommonModule } from '@angular/common';
 import { ProjectCardComponent } from '../project-card/project-card.component';
+import { GithubService } from '../../../services/github.service.js';
 
 // src/app/components/experience/experience.component.ts
 @Component({
@@ -10,32 +11,45 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
   standalone: true,
   imports: [CommonModule, ProjectCardComponent],
   template: `
-    <div class="portfolio-wrapper">
-      <section class="container py-5 mt-5">
+    <div class="portfolio-wrapper container">
+      <section class="container py-5 mt-5 mb-5">
         <div class="row align-items-center">
           <div class="col-md-7">
             <h4 class="text-accent fw-bold mb-2">Hello! I'm</h4>
             <h1 class="display-3 fw-bolder mb-3">{{ resume.name() }}</h1>
+            <p class="text-muted">
+              <i class="bi bi-linkedin me-2"><a href="https://www.linkedin.com/in/adityadomle"></a></i>
+              <i class="bi bi-github me-2"><a href="https://www.linkedin.com/in/adityadomle"></a></i>
+              <i class="bi bi-geo-alt"></i> {{ resume.personalInfo().location }}, India
+            </p>
+
             <p class="lead text-muted mb-4" style="max-width: 600px;">
               A <span class="text-dark fw-bold">{{ resume.role() }}</span> with
               <span class="text-dark fw-bold">{{ resume.experienceYears() }} years</span> of
               experience building scalable enterprise solutions and big data visualizations.
             </p>
             <div class="d-flex gap-3">
-              <button class="btn btn-accent px-4 py-2">Get In Touch</button>
+              <button class="btn btn-accent px-4 py-2">
+                <i class="bi bi-calendar2"></i>
+                <a class="text-decoration-none text-white ps-3" href="mailto:avinash.gara@gmail.com"
+                  >Schedule a call</a
+                >
+              </button>
               <button class="btn btn-outline-dark px-4 py-2">Resume</button>
             </div>
           </div>
           <div class="col-md-5 text-center d-none d-md-block">
             <div
-              class="hero-image-container shadow-lg rounded-4 mx-auto overflow-hidden"
+              class="hero-image-container shadow-lg rounded-4 mx-auto overflow-hidden mt-5"
               style="width: 300px; height: 350px;"
             >
+              @if (profile()) {
               <img
-                src="avi.jpg"
+                [src]="profile()!.avatar_url"
                 alt="Avinash Gara - Senior Front-End Developer"
                 class="img-fluid w-100 h-100 object-fit-cover shadow-glow"
               />
+              }
             </div>
           </div>
         </div>
@@ -95,6 +109,68 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
                   <span class="extra-small text-uppercase text-muted fw-bold">Angular Version</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-5 border-top" id="services">
+        <div class="text-center mb-5">
+          <h6 class="text-accent fw-bold text-uppercase">Services</h6>
+          <h2 class="display-5 fw-bolder">
+            Code that solves problems,<br />
+            one product at a time.
+          </h2>
+        </div>
+
+        <div class="row g-5">
+          <!-- Column 1 -->
+          <div class="col-md-4">
+            <div class="service-card h-100">
+              <div class="service-icon mb-3">
+                <i class="bi bi-code-slash fs-1 text-accent"></i>
+              </div>
+              <h5 class="fw-bold mb-3">What I can do for you</h5>
+              <p class="text-muted">Deliver faster, better products that users love.</p>
+              <ul class="list-unstyled small">
+                <li>• Design Strategy</li>
+                <li>• Web & Mobile App Design</li>
+                <li>• Front-end Development</li>
+                <li>• Back-end Development</li>
+                <li>• Fullstack Development</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="col-md-4">
+            <div class="service-card h-100">
+              <div class="service-icon mb-3">
+                <i class="bi bi-layers fs-1 text-accent"></i>
+              </div>
+              <h5 class="fw-bold mb-3">Applications I'm fluent in</h5>
+              <ul class="list-unstyled small">
+                <li>• Sketch</li>
+                <li>• Webflow</li>
+                <li>• Figma</li>
+                <li>• Angular Ecosystem</li>
+                <li>• NX Monorepo</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="col-md-4">
+            <div class="service-card h-100">
+              <div class="service-icon mb-3">
+                <i class="bi bi-person-check fs-1 text-accent"></i>
+              </div>
+              <h5 class="fw-bold mb-3">What you can expect</h5>
+              <ul class="list-unstyled small">
+                <li><strong>Clean & Functional:</strong> Intuitive design.</li>
+                <li><strong>Device Friendly:</strong> Seamless UX across devices.</li>
+                <li><strong>Maintainable:</strong> Scalable enterprise code.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -214,7 +290,87 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
         </div>
       </section>
 
-      <section class="container py-5 border-top mb-5" id="contact">
+      <section class="container py-5 border-top mb-5" id="github">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="github-wrapper">
+              <h1>GitHub Contributions</h1>
+              <div class="legend">
+                <span>Less</span>
+                <div class="box" style="background:#ebedf0"></div>
+                <div class="box" style="background:#9be9a8"></div>
+                <div class="box" style="background:#40c463"></div>
+                <div class="box" style="background:#30a14e"></div>
+                <div class="box" style="background:#216e39"></div>
+                <span>More</span>
+              </div>
+              <div class="heatmap-container">
+                <div class="months">
+                  <span>Feb</span>
+                  <span>Mar</span>
+                  <span>Apr</span>
+                  <span>May</span>
+                  <span>Jun</span>
+                  <span>Jul</span>
+                  <span>Aug</span>
+                  <span>Sep</span>
+                  <span>Oct</span>
+                  <span>Nov</span>
+                  <span>Dec</span>
+                  <span>Jan</span>
+                  <span>Feb</span>
+                </div>
+                <div class="heatmap">
+                  @for (week of contributionWeeks(); track $index) { @for (day of week; track
+                  $index) {
+                  <div
+                    class="day"
+                    [style.background]="getColor(day?.count ?? 0)"
+                    [title]="day?.date + ' — ' + day?.count + ' contributions'"
+                  ></div>
+                  } }
+                </div>
+              </div>
+
+              @if (totalContributions()) {
+              <p class="total">{{ totalContributions() }} contributions in the last year</p>
+              } @if (profile()) {
+              <div class="stats">
+                <div class="github-card">
+                  <i class="bi bi-people me-2"></i>
+                  <p>Followers</p>
+                  <p>{{ profile().followers }}</p>
+                </div>
+
+                <div class="github-card">
+                  <i class="bi bi-person-check me-2"></i>
+                  <p>Following</p>
+                  <p>{{ profile().following }}</p>
+                </div>
+
+                <div class="github-card">
+                  <i class="bi bi-flag me-2"></i>
+                  <p>Repos</p>
+                  <p>{{ profile().public_repos }}</p>
+                </div>
+                <div class="github-card">
+                  <i class="bi bi-heart mb-0"></i>
+                  <p>Love Count</p>
+                  <p>{{ profile().public_repos }}</p>
+                </div>
+                <div class="github-card">
+                  <i class="bi bi-eye me-2"></i>
+                  <p>Views</p>
+                  <p>{{ profile().public_repos }}</p>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="container py-5 border-top mb-5" id="contact">
         <h2 class="section-title">Contact</h2>
         <div class="row">
           <div class="col-md-5">
@@ -250,7 +406,7 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
             </form>
           </div>
         </div>
-      </section>
+      </section> -->
     </div>
   `,
   styles: [
@@ -260,6 +416,93 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
       } /* Teal color from UI capture */
       .text-accent {
         color: #20c997;
+      }
+
+      .github-wrapper {
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        padding: 20px;
+        color: #24292f;
+      }
+      .legend {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        margin-top: 10px;
+        color: #57606a;
+      }
+
+      .box {
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+      }
+
+      .heatmap-container {
+        overflow-x: auto;
+      }
+      .heatmap {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 14px;
+        grid-template-rows: repeat(7, 14px);
+        gap: 4px;
+      }
+
+      .heatmap::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .heatmap::-webkit-scrollbar-thumb {
+        background: #30363d;
+        border-radius: 10px;
+      }
+
+      .week {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 12px;
+      }
+
+      .day {
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        background: #ebedf0;
+      }
+
+      @media (max-width: 768px) {
+        .day {
+          width: 8px;
+          height: 8px;
+        }
+      }
+
+      .stats {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .months {
+        display: grid;
+        grid-auto-flow: column;
+        font-size: 12px;
+        margin-bottom: 8px;
+        color: #57606a;
+      }
+      .github-card {
+        background: white;
+        padding: 15px;
+        border-radius: 16px;
+        border: 0.001px solid #1f2937;
+        text-align: center;
+        width: 20%;
+      }
+      .github-card p {
+        margin-bottom: 0px;
       }
       .portfolio-wrapper {
         background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 0);
@@ -343,6 +586,38 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
         border-radius: 10px;
       }
 
+      .service-card {
+        padding: 2rem;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        background: white;
+        border: 1px solid #f1f3f5;
+      }
+
+      .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(32, 201, 151, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      :host-context([data-bs-theme='dark']) .service-card {
+        background: #1e1e1e;
+        border-color: #2a2a2a;
+      }
+
+      :host-context([data-bs-theme='dark']) .service-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
       /* Forms */
       .form-control {
         border: 1px solid #dee2e6;
@@ -391,5 +666,50 @@ import { ProjectCardComponent } from '../project-card/project-card.component';
   ],
 })
 export class ExperienceComponent {
+  private github = inject(GithubService);
+  profile = signal<any>(null);
+  totalContributions = signal<number>(0);
+  contributions = signal<any | null>(null);
+  contributionWeeks = signal<any[][]>([]);
+
   protected readonly resume = inject(ResumeService);
+  getColor(count: number): string {
+    if (count === 0) return '#ebedf0';
+    if (count < 3) return '#9be9a8';
+    if (count < 6) return '#40c463';
+    if (count < 10) return '#30a14e';
+    return '#216e39';
+  }
+  constructor() {
+    this.github.getProfile().subscribe({
+      next: (data) => this.profile.set(data),
+      error: () => this.profile.set(null),
+    });
+
+    this.github.getContributions().subscribe({
+      next: (data) => {
+        if (!data?.contributions) return;
+
+        const days = data.contributions;
+
+        // 🔥 Convert flat array into weeks (7 days each)
+        const weeks: any[][] = [];
+        for (let i = 0; i < days.length; i += 7) {
+          weeks.push(days.slice(i, i + 7));
+        }
+
+        this.contributionWeeks.set(weeks);
+
+        // total
+        if (data?.total) {
+          const firstYear = Object.keys(data.total)[0];
+          this.totalContributions.set(data.total[firstYear] ?? 0);
+        }
+      },
+      error: () => {
+        this.contributionWeeks.set([]);
+        this.totalContributions.set(0);
+      },
+    });
+  }
 }

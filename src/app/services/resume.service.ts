@@ -35,9 +35,15 @@ export class ResumeService {
   readonly skillMetrics = signal([
     { name: 'Angular 21 / TypeScript', level: 95 },
     { name: 'NX Monorepo', level: 90 },
-    { name: 'Data Visualization (Parquet)', level: 85 },
+    { name: 'Adobe Photoshop & Adobe Acrobat Professional', level: 85 },
     { name: 'Testing (Vitest/Jest)', level: 80 },
-    { name: 'Mobile (Ionic/React Native)', level: 75 }
+    { name: 'Mobile (Ionic/React Native)', level: 75 },
+    { name: 'JavaScript & HTML & CSS & Bootstrap & Webflow', level: 90 },
+    { name: 'Vue JS', level: 70 },
+    { name: 'AWS', level: 40 },
+    { name: 'Npm & GIT & Github & JIRA & Bitbucket', level: 100 },
+    { name: 'Visual Studio', level: 100 },
+    { name: 'Android Studio', level: 60 }
   ]);
 
   readonly education = signal<Education[]>([
