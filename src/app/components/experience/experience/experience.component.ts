@@ -18,8 +18,12 @@ import { GithubService } from '../../../services/github.service.js';
             <h4 class="text-accent fw-bold mb-2">Hello! I'm</h4>
             <h1 class="display-3 fw-bolder mb-3">{{ resume.name() }}</h1>
             <p class="text-muted">
-              <i class="bi bi-linkedin me-2"><a href="https://www.linkedin.com/in/adityadomle"></a></i>
-              <i class="bi bi-github me-2"><a href="https://www.linkedin.com/in/adityadomle"></a></i>
+              <i class="bi bi-linkedin me-2"
+                ><a href="https://www.linkedin.com/in/adityadomle"></a
+              ></i>
+              <i class="bi bi-github me-2"
+                ><a href="https://www.linkedin.com/in/adityadomle"></a
+              ></i>
               <i class="bi bi-geo-alt"></i> {{ resume.personalInfo().location }}, India
             </p>
 
@@ -35,7 +39,6 @@ import { GithubService } from '../../../services/github.service.js';
                   >Schedule a call</a
                 >
               </button>
-              <button class="btn btn-outline-dark px-4 py-2">Resume</button>
             </div>
           </div>
           <div class="col-md-5 text-center d-none d-md-block">
@@ -55,7 +58,7 @@ import { GithubService } from '../../../services/github.service.js';
         </div>
       </section>
 
-      <section class="container py-5 border-top" id="about">
+      <section class="container py-5 " id="about">
         <h2 class="section-title">About Me</h2>
         <div class="row">
           <div class="col-lg-12">
@@ -114,7 +117,7 @@ import { GithubService } from '../../../services/github.service.js';
         </div>
       </section>
 
-      <section class="container py-5 border-top" id="services">
+      <section class="container py-5 " id="services">
         <div class="text-center mb-5">
           <h6 class="text-accent fw-bold text-uppercase">Services</h6>
           <h2 class="display-5 fw-bolder">
@@ -150,9 +153,8 @@ import { GithubService } from '../../../services/github.service.js';
               </div>
               <h5 class="fw-bold mb-3">Applications I'm fluent in</h5>
               <ul class="list-unstyled small">
-                <li>• Sketch</li>
+                <li>• Front-end Development</li>
                 <li>• Webflow</li>
-                <li>• Figma</li>
                 <li>• Angular Ecosystem</li>
                 <li>• NX Monorepo</li>
               </ul>
@@ -176,7 +178,7 @@ import { GithubService } from '../../../services/github.service.js';
         </div>
       </section>
 
-      <section class="container py-5 border-top" id="skills">
+      <section class="container py-5 " id="skills">
         <h2 class="section-title">Skills</h2>
         <div class="row">
           @for (skill of resume.skillMetrics(); track skill.name) {
@@ -193,28 +195,36 @@ import { GithubService } from '../../../services/github.service.js';
         </div>
       </section>
 
-      <section class="container py-5 border-top" id="experience">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-          @for (job of resume.experiences(); track job.company; let first = $first) {
-          <div class="timeline-item pb-5">
-            <div class="timeline-marker" [class.current]="first"></div>
-            <div class="timeline-content ps-4">
-              <h5 class="fw-bold mb-1 text-accent">{{ job.role }}</h5>
-              <h6 class="fw-bold mb-1">{{ job.company }}</h6>
-              <small class="text-muted d-block mb-3">{{ job.period }}</small>
-              <ul class="text-secondary small">
-                @for (h of job.highlights; track h) {
-                <li>{{ h }}</li>
-                }
-              </ul>
+      <section class="container py-5" id="experience">
+        <h2 class="section-title mb-5">Experience</h2>
+
+        <div class="row">
+          <div class="col-md-7">
+            <div class="timeline">
+              @for (job of resume.experiences(); track job.company; let first = $first) {
+              <div class="timeline-item pb-5">
+                <div class="timeline-marker" [class.current]="first"></div>
+                <div class="timeline-content ps-4">
+                  <h5 class="fw-bold mb-1 text-accent">{{ job.role }}</h5>
+                  <h6 class="fw-bold mb-1">{{ job.company }}</h6>
+                  <small class="text-muted d-block mb-3">{{ job.period }}</small>
+                  <ul class="text-secondary small">
+                    @for (h of job.highlights; track h) {
+                    <li>{{ h }}</li>
+                    }
+                  </ul>
+                </div>
+              </div>
+              }
             </div>
           </div>
-          }
+
+          <div class="col-md-5 d-flex align-items-center justify-content-center">
+          </div>
         </div>
       </section>
 
-      <section class="container py-5 border-top" id="tech-stack">
+      <section class="container py-5 " id="tech-stack">
         <div class="text-center mb-5">
           <h2 class="section-title mb-2">Tech Stack</h2>
           <p class="text-muted">These are the technologies I work with to bring ideas to life.</p>
@@ -235,8 +245,7 @@ import { GithubService } from '../../../services/github.service.js';
             </div>
           </div>
 
-          <div class="col">
-            <div class="tech-card">
+          <div class="col"> <div class="tech-card">
               <i class="bi bi-braces text-accent fs-1"></i>
               <span class="mt-2 fw-bold">Node.js</span>
             </div>
@@ -245,14 +254,14 @@ import { GithubService } from '../../../services/github.service.js';
           <div class="col">
             <div class="tech-card">
               <i class="bi bi-terminal text-accent fs-1"></i>
-              <span class="mt-2 fw-bold">Python</span>
+              <span class="mt-2 fw-bold">Angular</span>
             </div>
           </div>
 
           <div class="col">
             <div class="tech-card">
               <i class="bi bi-palette text-accent fs-1"></i>
-              <span class="mt-2 fw-bold">Figma</span>
+              <span class="mt-2 fw-bold">Adobe</span>
             </div>
           </div>
 
@@ -279,7 +288,7 @@ import { GithubService } from '../../../services/github.service.js';
         </div>
       </section>
 
-      <section class="container py-5 border-top" id="projects">
+      <section class="container py-5 " id="projects">
         <h2 class="section-title">Projects</h2>
         <div class="row g-4">
           @for (item of resume.projects(); track item.name) {
@@ -290,7 +299,7 @@ import { GithubService } from '../../../services/github.service.js';
         </div>
       </section>
 
-      <section class="container py-5 border-top mb-5" id="github">
+      <section class="container py-5  mb-5" id="github">
         <div class="row">
           <div class="col-md-12">
             <div class="github-wrapper">
@@ -370,7 +379,7 @@ import { GithubService } from '../../../services/github.service.js';
         </div>
       </section>
 
-      <!-- <section class="container py-5 border-top mb-5" id="contact">
+      <!-- <section class="container py-5  mb-5" id="contact">
         <h2 class="section-title">Contact</h2>
         <div class="row">
           <div class="col-md-5">
@@ -416,6 +425,9 @@ import { GithubService } from '../../../services/github.service.js';
       } /* Teal color from UI capture */
       .text-accent {
         color: #20c997;
+      }
+      .experience-img {
+        opacity: 0.9;
       }
 
       .github-wrapper {
