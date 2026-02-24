@@ -151,6 +151,7 @@ export class ResumeService {
     'SonarQube',
     'RxJS',
   ]);
+  
 
   // 2. Use Computed Signals for derived data (e.g., filtering)
   readonly totalProjects = computed(() => this.projects().length);

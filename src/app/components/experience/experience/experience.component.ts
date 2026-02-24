@@ -19,10 +19,10 @@ import { GithubService } from '../../../services/github.service.js';
             <h1 class="display-3 fw-bolder mb-3">{{ resume.name() }}</h1>
             <p class="text-muted">
               <i class="bi bi-linkedin me-2"
-                ><a href="https://www.linkedin.com/in/adityadomle"></a
+                ><a href="hhttps://www.linkedin.com/in/avinash-gara-b6a80a9b/"></a
               ></i>
               <i class="bi bi-github me-2"
-                ><a href="https://www.linkedin.com/in/adityadomle"></a
+                ><a href="https://github.com/Avinash-12345"></a
               ></i>
               <i class="bi bi-geo-alt"></i> {{ resume.personalInfo().location }}, India
             </p>
@@ -59,7 +59,7 @@ import { GithubService } from '../../../services/github.service.js';
       </section>
 
       <section class="container py-5 " id="about">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title"><i class="bi bi-person-badge-fill text-accent"></i> About Me</h2>
         <div class="row">
           <div class="col-lg-12">
             <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">
@@ -139,8 +139,6 @@ import { GithubService } from '../../../services/github.service.js';
                 <li>• Design Strategy</li>
                 <li>• Web & Mobile App Design</li>
                 <li>• Front-end Development</li>
-                <li>• Back-end Development</li>
-                <li>• Fullstack Development</li>
               </ul>
             </div>
           </div>
@@ -179,7 +177,7 @@ import { GithubService } from '../../../services/github.service.js';
       </section>
 
       <section class="container py-5 " id="skills">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title"><i class="bi bi-code-slash text-accent"></i> Skills</h2>
         <div class="row">
           @for (skill of resume.skillMetrics(); track skill.name) {
           <div class="col-md-6 mb-4">
@@ -196,31 +194,65 @@ import { GithubService } from '../../../services/github.service.js';
       </section>
 
       <section class="container py-5" id="experience">
-        <h2 class="section-title mb-5">Experience</h2>
+        <h2 class="section-title mb-5 text-center">
+          <i class="bi bi-clipboard-data text-accent"></i> Experience
+        </h2>
 
-        <div class="row">
-          <div class="col-md-7">
-            <div class="timeline">
-              @for (job of resume.experiences(); track job.company; let first = $first) {
-              <div class="timeline-item pb-5">
-                <div class="timeline-marker" [class.current]="first"></div>
-                <div class="timeline-content ps-4">
+        <div class="timeline-wrapper">
+          <div class="central-line"></div>
+
+          @for (job of resume.experiences(); track job.company; let i = $index; let first = $first)
+          {
+          <div class="row mb-5 align-items-center">
+            <div class="col-md-6 d-none d-md-block text-end pe-5">
+              @if (i % 2 === 0) {
+              <div class="experience-card">
+                <h5 class="fw-bold mb-1 text-accent">{{ job.role }}</h5>
+                <h6 class="fw-bold mb-1">{{ job.company }}</h6>
+                <small class="text-muted d-block mb-3">{{ job.period }}</small>
+                <ul class="text-secondary small list-unstyled">
+                  @for (h of job.highlights; track h) {
+                  <li>{{ h }}</li>
+                  }
+                </ul>
+              </div>
+              }
+            </div>
+
+            <div class="timeline-dot-container">
+              <div class="timeline-marker" [class.current]="first"></div>
+            </div>
+
+            <div class="col-md-6 ps-5">
+              @if (i % 2 !== 0) {
+              <div class="experience-card">
+                <h5 class="fw-bold mb-1 text-accent">{{ job.role }}</h5>
+                <h6 class="fw-bold mb-1">{{ job.company }}</h6>
+                <small class="text-muted d-block mb-3">{{ job.period }}</small>
+                <ul class="text-secondary small list-unstyled">
+                  @for (h of job.highlights; track h) {
+                  <li>{{ h }}</li>
+                  }
+                </ul>
+              </div>
+              }
+              <div class="d-md-none">
+                @if (i % 2 === 0) {
+                <div class="experience-card">
                   <h5 class="fw-bold mb-1 text-accent">{{ job.role }}</h5>
                   <h6 class="fw-bold mb-1">{{ job.company }}</h6>
                   <small class="text-muted d-block mb-3">{{ job.period }}</small>
-                  <ul class="text-secondary small">
+                  <ul class="text-secondary small list-unstyled">
                     @for (h of job.highlights; track h) {
                     <li>{{ h }}</li>
                     }
                   </ul>
                 </div>
+                }
               </div>
-              }
             </div>
           </div>
-
-          <div class="col-md-5 d-flex align-items-center justify-content-center">
-          </div>
+          }
         </div>
       </section>
 
@@ -245,7 +277,8 @@ import { GithubService } from '../../../services/github.service.js';
             </div>
           </div>
 
-          <div class="col"> <div class="tech-card">
+          <div class="col">
+            <div class="tech-card">
               <i class="bi bi-braces text-accent fs-1"></i>
               <span class="mt-2 fw-bold">Node.js</span>
             </div>
@@ -289,7 +322,7 @@ import { GithubService } from '../../../services/github.service.js';
       </section>
 
       <section class="container py-5 " id="projects">
-        <h2 class="section-title">Projects</h2>
+        <h2 class="section-title"><i class="bi bi-folder-fill text-accent"></i> Projects</h2>
         <div class="row g-4">
           @for (item of resume.projects(); track item.name) {
           <div class="col-md-6 col-lg-4">
@@ -302,8 +335,8 @@ import { GithubService } from '../../../services/github.service.js';
       <section class="container py-5  mb-5" id="github">
         <div class="row">
           <div class="col-md-12">
+            <h1 class="mb-3"><i class="bi bi-github text-accent"></i> GitHub Contributions</h1>
             <div class="github-wrapper">
-              <h1>GitHub Contributions</h1>
               <div class="legend">
                 <span>Less</span>
                 <div class="box" style="background:#ebedf0"></div>
@@ -342,35 +375,36 @@ import { GithubService } from '../../../services/github.service.js';
               </div>
 
               @if (totalContributions()) {
-              <p class="total">{{ totalContributions() }} contributions in the last year</p>
+              <p class="total mt-3">
+                {{ totalContributions() }}
+                {{ totalContributions() === 1 ? 'contribution' : 'contributions' }} in Overall
+              </p>
               } @if (profile()) {
               <div class="stats">
                 <div class="github-card">
-                  <i class="bi bi-people me-2"></i>
-                  <p>Followers</p>
-                  <p>{{ profile().followers }}</p>
+                  <i class="bi bi-calendar text-accent mb-0"></i>
+                  <p>Created</p>
+                  <p>{{ profile().created_at | date }}</p>
                 </div>
-
                 <div class="github-card">
-                  <i class="bi bi-person-check me-2"></i>
+                  <i class="bi bi-person-check text-accent me-2"></i>
                   <p>Following</p>
                   <p>{{ profile().following }}</p>
                 </div>
-
                 <div class="github-card">
-                  <i class="bi bi-flag me-2"></i>
+                  <i class="bi bi-flag text-accent me-2"></i>
                   <p>Repos</p>
                   <p>{{ profile().public_repos }}</p>
                 </div>
                 <div class="github-card">
-                  <i class="bi bi-heart mb-0"></i>
-                  <p>Love Count</p>
-                  <p>{{ profile().public_repos }}</p>
+                  <i class="bi bi-people text-accent me-2"></i>
+                  <p>Followers</p>
+                  <p>{{ profile().followers }}</p>
                 </div>
                 <div class="github-card">
-                  <i class="bi bi-eye me-2"></i>
-                  <p>Views</p>
-                  <p>{{ profile().public_repos }}</p>
+                  <i class="bi bi-calendar me-2 text-accent"></i>
+                  <p>Updated</p>
+                  <p>{{ profile().updated_at | date }}</p>
                 </div>
               </div>
               }
@@ -428,6 +462,57 @@ import { GithubService } from '../../../services/github.service.js';
       }
       .experience-img {
         opacity: 0.9;
+      }
+      .timeline-wrapper {
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      /* The vertical line in the middle */
+      .central-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #dee2e6; /* Adjust color to match your theme */
+        transform: translateX(-50%);
+      }
+
+      /* Container for the dot to keep it centered */
+      .timeline-dot-container {
+        position: absolute;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+
+      .timeline-marker {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        border: 3px solid #dee2e6;
+      }
+
+      .timeline-marker.current {
+        border-color: var(--accent-color, #007bff); /* Use your accent color */
+        background: var(--accent-color, #007bff);
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 767.98px) {
+        .central-line {
+          left: 20px;
+        }
+        .timeline-dot-container {
+          left: 20px;
+        }
+        .experience-card {
+          text-align: left !important;
+        }
       }
 
       .github-wrapper {
@@ -538,28 +623,6 @@ import { GithubService } from '../../../services/github.service.js';
         text-transform: capitalize;
       }
 
-      /* Timeline Styling */
-      .timeline {
-        border-left: 2px solid #e9ecef;
-        position: relative;
-        margin-left: 10px;
-      }
-      .timeline-item {
-        position: relative;
-      }
-      .timeline-marker {
-        position: absolute;
-        left: -9px;
-        top: 0;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: #dee2e6;
-        border: 3px solid white;
-      }
-      .timeline-marker.current {
-        background: #20c997;
-      }
 
       .hero-image-container {
         border: 2px solid rgba(32, 201, 151, 0.2); /* Subtle teal border */
@@ -714,8 +777,14 @@ export class ExperienceComponent {
 
         // total
         if (data?.total) {
-          const firstYear = Object.keys(data.total)[0];
-          this.totalContributions.set(data.total[firstYear] ?? 0);
+          const total = data.total as Record<string, number>;
+
+          const totalSum = Object.values(total).reduce(
+            (sum: number, value: number) => sum + value,
+            0
+          );
+
+          this.totalContributions.set(totalSum);
         }
       },
       error: () => {
