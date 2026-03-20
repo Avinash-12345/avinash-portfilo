@@ -4,39 +4,38 @@ import { ResumeService } from '../../../services/resume.service';
 import { CommonModule } from '@angular/common';
 import { ProjectCardComponent } from '../project-card/project-card.component';
 import { GithubService } from '../../../services/github.service.js';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 // src/app/components/experience/experience.component.ts
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule, ProjectCardComponent],
+  imports: [CommonModule, ProjectCardComponent, TranslateModule],
   template: `
     <div class="portfolio-wrapper container">
       <section class="container py-5 mt-5 mb-5">
         <div class="row align-items-center">
           <div class="col-md-7">
-            <h4 class="text-accent fw-bold mb-2">Hello! I'm</h4>
+            <h4 class="text-accent fw-bold mb-2">{{ 'HERO.HI' | translate }}</h4>
             <h1 class="display-3 fw-bolder mb-3">{{ resume.name() }}</h1>
             <p class="text-muted">
-              <i class="bi bi-linkedin me-2"
-                ><a href="hhttps://www.linkedin.com/in/avinash-gara-b6a80a9b/"></a
-              ></i>
-              <i class="bi bi-github me-2"
-                ><a href="https://github.com/Avinash-12345"></a
-              ></i>
-              <i class="bi bi-geo-alt"></i> {{ resume.personalInfo().location }}, India
+              <a href="https://www.linkedin.com/in/avinash-gara-b6a80a9b/" target="_blank"
+                ><i class="bi bi-linkedin me-2 text-primary"></i
+              ></a>
+              <a href="https://github.com/Avinash-12345" target="_blank"
+                ><i class="bi bi-github me-2 text-primary"></i
+              ></a>
+              <i class="bi bi-geo-alt text-primary"></i> {{ resume.personalInfo().location }}, India
             </p>
 
             <p class="lead text-muted mb-4" style="max-width: 600px;">
-              A <span class="text-dark fw-bold">{{ resume.role() }}</span> with
-              <span class="text-dark fw-bold">{{ resume.experienceYears() }} years</span> of
-              experience building scalable enterprise solutions and big data visualizations.
+              {{ 'HERO.EXP_LEAD' | translate: { role: resume.role(), years: resume.experienceYears() } }}
             </p>
             <div class="d-flex gap-3">
               <button class="btn btn-accent px-4 py-2">
                 <i class="bi bi-calendar2"></i>
                 <a class="text-decoration-none text-white ps-3" href="mailto:avinash.gara@gmail.com"
-                  >Schedule a call</a
+                  >{{ 'HERO.SCHEDULE_CALL' | translate }}</a
                 >
               </button>
             </div>
@@ -59,57 +58,35 @@ import { GithubService } from '../../../services/github.service.js';
       </section>
 
       <section class="container py-5 " id="about">
-        <h2 class="section-title"><i class="bi bi-person-badge-fill text-accent"></i> About Me</h2>
+        <h2 class="section-title"><i class="bi bi-person-badge-fill text-accent"></i> {{ 'ABOUT.TITLE' | translate }}</h2>
         <div class="row">
           <div class="col-lg-12">
-            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">
-              I am a dedicated <strong>Senior Front-End Developer</strong> based in
-              {{ resume.personalInfo().location }}, India, with over
-              <strong>{{ resume.experienceYears() }} years</strong> of professional experience in
-              crafting scalable, enterprise-grade web applications. My journey in software
-              engineering began with a <strong>B.Tech from JNTU Kakinada</strong>, and has evolved
-              into a deep specialization in the <strong>Angular ecosystem</strong>.
-            </p>
-
-            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">
-              Currently, at <strong>Cognizant Technology Services</strong>, I am driving innovation
-              in <strong>Big Data Analytics</strong>. I architect comprehensive workflow engines and
-              engineer high-performance visualization tools to render complex signal data from
-              <strong>Parquet files</strong> into interactive, real-time line charts.
-            </p>
-
-            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">
-              I am a strong advocate for modern engineering standards, utilizing
-              <strong>NX Monorepos</strong> for architectural scalability and ensuring
-              uncompromising code quality through <strong>SonarQube</strong> and advanced testing
-              suites like <strong>Vitest and Jest</strong>. My goal is to continuously push the
-              boundaries of what's possible on the web by blending performance-driven engineering
-              with intuitive UI/UX design.
-            </p>
-
+            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">{{ 'ABOUT.PARA_1' | translate }}</p>
+            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">{{ 'ABOUT.PARA_2' | translate }}</p>
+            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">{{ 'ABOUT.PARA_3' | translate }}</p>
             <div class="row mt-5 g-4">
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">{{ resume.experienceYears() }}+</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">Years Exp.</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.EXP' | translate }}</span>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">{{ resume.totalProjects() }}</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">Key Projects</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.PROJECTS' | translate }}</span>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">5+</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">Companies</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.COMPANIES' | translate }}</span>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">21</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">Angular Version</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.VERSION' | translate }}</span>
                 </div>
               </div>
             </div>
@@ -119,10 +96,9 @@ import { GithubService } from '../../../services/github.service.js';
 
       <section class="container py-5 " id="services">
         <div class="text-center mb-5">
-          <h6 class="text-accent fw-bold text-uppercase">Services</h6>
+          <h6 class="text-accent fw-bold text-uppercase">{{ 'SERVICES.SUBTITLE' | translate }}</h6>
           <h2 class="display-5 fw-bolder">
-            Code that solves problems,<br />
-            one product at a time.
+          {{ 'SERVICES.TITLE' | translate }}
           </h2>
         </div>
 
@@ -513,6 +489,12 @@ import { GithubService } from '../../../services/github.service.js';
         .experience-card {
           text-align: left !important;
         }
+        .stats {
+          flex-wrap: wrap;
+        }
+        .github-card {
+          width: auto !important;
+        }
       }
 
       .github-wrapper {
@@ -622,7 +604,6 @@ import { GithubService } from '../../../services/github.service.js';
         margin-bottom: 2.5rem;
         text-transform: capitalize;
       }
-
 
       .hero-image-container {
         border: 2px solid rgba(32, 201, 151, 0.2); /* Subtle teal border */
@@ -741,6 +722,7 @@ import { GithubService } from '../../../services/github.service.js';
   ],
 })
 export class ExperienceComponent {
+  
   private github = inject(GithubService);
   profile = signal<any>(null);
   totalContributions = signal<number>(0);
@@ -793,4 +775,5 @@ export class ExperienceComponent {
       },
     });
   }
+
 }

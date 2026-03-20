@@ -61,11 +61,11 @@ export class ResumeService {
   
   readonly projects = signal<Project[]>([
     {
-      name: 'Big Data Workflow Engine',
+      name: 'Predictive Maintenance Framework for EV & ADAS Sensor Systems',
       duration: 'Ongoing',
       description:
-        'Developed an end-to-end analytics platform by engineering a comprehensive workflow engine for analytical pipelines, including an intuitive GUI for event template modeling and interactive line charts for Parquet signal data.',
-      technologies: ['Angular 21', 'TypeScript', 'NX Monorepo', 'Vitest', 'SonarQube'],
+        'The Data Science Framework is an application to focus on enhancing predictive maintenance for electric vehicles by analyzing time-series sensor data collected from cars.',
+      technologies: ['Angular 21', 'TypeScript', 'NX Monorepo', 'Vitest', 'SonarQube', 'Python'],
     },
     {
       name: 'Revolutiones',

@@ -1,0 +1,42 @@
+{
+    "HERO": {
+      "HI": "Bonjour! Je suis",
+      "EXP_LEAD": "Un {role} avec {years} ans d'expérience dans la création de solutions d'entreprise évolutives et de visualisations de Big Data.",
+      "SCHEDULE_CALL": "Prendre rendez-vous"
+    },
+    "ABOUT": {
+      "TITLE": "À propos de moi",
+      "PARA_1": "Je suis un <strong>Développeur Front-End Senior</strong> passionné basé à {{location}}, en Inde, avec plus de <strong>{{years}} ans</strong> d'expérience professionnelle dans la conception d'applications web d'entreprise évolutives. Mon parcours a commencé par un <strong>B.Tech de JNTU Kakinada</strong> et a évolué vers une spécialisation profonde dans <strong>l'écosystème Angular</strong>.",
+      "PARA_2": "Actuellement, chez <strong>Cognizant Technology Services</strong>, je stimule l'innovation dans l'analyse de <strong>Big Data</strong>. J'architecture des moteurs de flux de travail complets et je conçois des outils de visualisation haute performance pour rendre des données de signal complexes à partir de <strong>fichiers Parquet</strong>.",
+      "PARA_3": "Je prône les normes d'ingénierie modernes, utilisant <strong>NX Monorepos</strong> pour l'évolutivité architecturale et garantissant une qualité de code sans compromis via <strong>SonarQube</strong> et des suites de tests comme <strong>Vitest et Jest</strong>.",
+      "STATS": {
+        "EXP": "Années Exp.",
+        "PROJECTS": "Projets Clés",
+        "COMPANIES": "Entreprises",
+        "VERSION": "Version Angular"
+      }
+    },
+    "SERVICES": {
+      "SUBTITLE": "Services",
+      "TITLE": "Un code qui résout les problèmes,\nun produit à la fois.",
+      "CAN_DO": {
+        "TITLE": "Ce que je peux faire pour vous",
+        "DESC": "Livrer des produits plus rapides et meilleurs que les utilisateurs adorent.",
+        "LIST": ["Stratégie de Design", "Design Web & Mobile", "Développement Front-end"]
+      },
+      "FLUENT": "Applications maîtrisées",
+      "EXPECT": {
+        "TITLE": "Ce à quoi vous pouvez vous attendre",
+        "CLEAN": "Propre & Fonctionnel",
+        "DEVICE": "Adapté aux mobiles",
+        "MAINTAINABLE": "Maintenable"
+      }
+    },
+    "SECTIONS": {
+      "SKILLS": "Compétences",
+      "EXPERIENCE": "Expérience",
+      "TECH_STACK": "Stack Technique",
+      "PROJECTS": "Projets",
+      "GITHUB": "Contributions GitHub"
+    }
+  }

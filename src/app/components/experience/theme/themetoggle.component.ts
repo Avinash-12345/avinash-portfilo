@@ -1,11 +1,12 @@
 import { Component, inject, signal, afterNextRender, OnDestroy } from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   template: `
     <nav
       class="navbar navbar-expand-lg fixed-top shadow-sm"
@@ -53,11 +54,25 @@ import { CommonModule } from '@angular/common';
             >
               <i [class]="themeService.isDark() ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill'"></i>
               <span>{{ themeService.isDark() ? 'Dark' : 'Light' }}</span>
-            </button> 
+            </button>
             <p class="time-info mb-0 ms-3 d-flex align-items-center gap-1">
               <i class="bi bi-clock"></i>
               {{ currentTime() | date : 'hh:mm:ss a' }}
             </p>
+            <div class="btn-group ms-3">
+              <button
+                class="btn btn-sm dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-translate"></i> Translate
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" (click)="changeLang('en')">English</a></li>
+                <li><a class="dropdown-item" (click)="changeLang('fr')">France</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -97,6 +112,7 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class ThemeToggleComponent {
+  private translate = inject(TranslateService);
   currentTime = signal(new Date());
   private intervalId: any;
   protected readonly themeService = inject(ThemeService);
@@ -111,5 +127,8 @@ export class ThemeToggleComponent {
 
   ngOnDestroy() {
     clearInterval(this.intervalId);
+  }
+  changeLang(lang: string) {
+    this.translate.use(lang);
   }
 }

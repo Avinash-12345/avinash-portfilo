@@ -1,0 +1,42 @@
+{
+    "HERO": {
+      "HI": "Hello! I'm",
+      "EXP_LEAD": "A {role} with {years} years of experience building scalable enterprise solutions and big data visualizations.",
+      "SCHEDULE_CALL": "Schedule a call"
+    },
+    "ABOUT": {
+      "TITLE": "About Me",
+      "PARA_1": "I am a dedicated <strong>Senior Front-End Developer</strong> based in {{location}}, India, with over <strong>{{years}} years</strong> of professional experience in crafting scalable, enterprise-grade web applications. My journey in software engineering began with a <strong>B.Tech from JNTU Kakinada</strong>, and has evolved into a deep specialization in the <strong>Angular ecosystem</strong>.",
+      "PARA_2": "Currently, at <strong>Cognizant Technology Services</strong>, I am driving innovation in <strong>Big Data Analytics</strong>. I architect comprehensive workflow engines and engineer high-performance visualization tools to render complex signal data from <strong>Parquet files</strong> into interactive, real-time line charts.",
+      "PARA_3": "I am a strong advocate for modern engineering standards, utilizing <strong>NX Monorepos</strong> for architectural scalability and ensuring uncompromising code quality through <strong>SonarQube</strong> and advanced testing suites like <strong>Vitest and Jest</strong>. My goal is to continuously push the boundaries of what's possible on the web by blending performance-driven engineering with intuitive UI/UX design.",
+      "STATS": {
+        "EXP": "Years Exp.",
+        "PROJECTS": "Key Projects",
+        "COMPANIES": "Companies",
+        "VERSION": "Angular Version"
+      }
+    },
+    "SERVICES": {
+      "SUBTITLE": "Services",
+      "TITLE": "Code that solves problems,\none product at a time.",
+      "CAN_DO": {
+        "TITLE": "What I can do for you",
+        "DESC": "Deliver faster, better products that users love.",
+        "LIST": ["Design Strategy", "Web & Mobile App Design", "Front-end Development"]
+      },
+      "FLUENT": "Applications I'm fluent in",
+      "EXPECT": {
+        "TITLE": "What you can expect",
+        "CLEAN": "Clean & Functional",
+        "DEVICE": "Device Friendly",
+        "MAINTAINABLE": "Maintainable"
+      }
+    },
+    "SECTIONS": {
+      "SKILLS": "Skills",
+      "EXPERIENCE": "Experience",
+      "TECH_STACK": "Tech Stack",
+      "PROJECTS": "Projects",
+      "GITHUB": "GitHub Contributions"
+    }
+  }
