@@ -1,7 +1,7 @@
 {
     "HERO": {
       "HI": "Hello! I'm",
-      "EXP_LEAD": "A {role} with {years} years of experience building scalable enterprise solutions and big data visualizations.",
+      "EXP_LEAD": "A {{role}} with {{years}} years of experience building scalable enterprise solutions and big data visualizations.",
       "SCHEDULE_CALL": "Schedule a call"
     },
     "ABOUT": {

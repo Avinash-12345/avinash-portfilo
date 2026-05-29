@@ -71,6 +71,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" (click)="changeLang('en')">English</a></li>
                 <li><a class="dropdown-item" (click)="changeLang('fr')">France</a></li>
+                <li><a class="dropdown-item" (click)="changeLang('de')">German</a></li>
               </ul>
             </div>
           </div>
@@ -116,8 +117,10 @@ export class ThemeToggleComponent {
   currentTime = signal(new Date());
   private intervalId: any;
   protected readonly themeService = inject(ThemeService);
-  protected readonly brandName = 'avinashgara.com';
+  protected readonly brandName = 'Tech';
   constructor() {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
     afterNextRender(() => {
       this.intervalId = setInterval(() => {
         this.currentTime.set(new Date());

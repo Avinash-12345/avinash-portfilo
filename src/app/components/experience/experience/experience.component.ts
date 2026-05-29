@@ -29,12 +29,17 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
             </p>
 
             <p class="lead text-muted mb-4" style="max-width: 600px;">
-              {{ 'HERO.EXP_LEAD' | translate: { role: resume.role(), years: resume.experienceYears() } }}
+              {{
+                'HERO.EXP_LEAD'
+                  | translate : { role: resume.role(), years: resume.experienceYears() }
+              }}
             </p>
             <div class="d-flex gap-3">
               <button class="btn btn-accent px-4 py-2">
                 <i class="bi bi-calendar2"></i>
-                <a class="text-decoration-none text-white ps-3" href="mailto:avinash.gara@gmail.com"
+                <a
+                  class="text-decoration-none text-white ps-3"
+                  href="mailto:avinash.gara@gmail.com"
                   >{{ 'HERO.SCHEDULE_CALL' | translate }}</a
                 >
               </button>
@@ -58,35 +63,64 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
       </section>
 
       <section class="container py-5 " id="about">
-        <h2 class="section-title"><i class="bi bi-person-badge-fill text-accent"></i> {{ 'ABOUT.TITLE' | translate }}</h2>
+        <h2 class="section-title">
+          <i class="bi bi-person-badge-fill text-accent"></i> {{ 'ABOUT.TITLE' | translate }}
+        </h2>
         <div class="row">
           <div class="col-lg-12">
-            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">{{ 'ABOUT.PARA_1' | translate }}</p>
-            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">{{ 'ABOUT.PARA_2' | translate }}</p>
-            <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.8;">{{ 'ABOUT.PARA_3' | translate }}</p>
+            <p
+              class="text-secondary mb-4"
+              style="font-size: 1.1rem; line-height: 1.8;"
+              [innerHTML]="
+                'ABOUT.PARA_1'
+                  | translate
+                    : {
+                        location: resume.personalInfo().location,
+                        years: resume.experienceYears()
+                      }
+              "
+            ></p>
+            <p
+              class="text-secondary mb-4"
+              style="font-size: 1.1rem; line-height: 1.8;"
+              [innerHTML]="'ABOUT.PARA_2' | translate"
+            ></p>
+            <p
+              class="text-secondary mb-4"
+              style="font-size: 1.1rem; line-height: 1.8;"
+              [innerHTML]="'ABOUT.PARA_3' | translate"
+            ></p>
             <div class="row mt-5 g-4">
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">{{ resume.experienceYears() }}+</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.EXP' | translate }}</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{
+                    'ABOUT.STATS.EXP' | translate
+                  }}</span>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">{{ resume.totalProjects() }}</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.PROJECTS' | translate }}</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{
+                    'ABOUT.STATS.PROJECTS' | translate
+                  }}</span>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">5+</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.COMPANIES' | translate }}</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{
+                    'ABOUT.STATS.COMPANIES' | translate
+                  }}</span>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="p-3 border rounded text-center bg-light">
                   <h3 class="fw-bold text-accent mb-1">21</h3>
-                  <span class="extra-small text-uppercase text-muted fw-bold">{{ 'ABOUT.STATS.VERSION' | translate }}</span>
+                  <span class="extra-small text-uppercase text-muted fw-bold">{{
+                    'ABOUT.STATS.VERSION' | translate
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -98,7 +132,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
         <div class="text-center mb-5">
           <h6 class="text-accent fw-bold text-uppercase">{{ 'SERVICES.SUBTITLE' | translate }}</h6>
           <h2 class="display-5 fw-bolder">
-          {{ 'SERVICES.TITLE' | translate }}
+            {{ 'SERVICES.TITLE' | translate }}
           </h2>
         </div>
 
@@ -722,7 +756,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   ],
 })
 export class ExperienceComponent {
-  
   private github = inject(GithubService);
   profile = signal<any>(null);
   totalContributions = signal<number>(0);
@@ -775,5 +808,4 @@ export class ExperienceComponent {
       },
     });
   }
-
 }

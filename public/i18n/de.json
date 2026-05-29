@@ -1,0 +1,46 @@
+{
+    "HERO": {
+      "HI": "Hallo! Ich bin",
+      "EXP_LEAD": "Ein {{role}} mit {{years}} Jahren Erfahrung im Aufbau skalierbarer Unternehmenslösungen und Big-Data-Visualisierungen.",
+      "SCHEDULE_CALL": "Ein Gespräch vereinbaren"
+    },
+    "ABOUT": {
+      "TITLE": "Über mich",
+      "PARA_1": "Ich bin ein engagierter <strong>Senior Front-End Entwickler</strong> aus {{location}}, Indien, mit über <strong>{{years}} Jahren</strong> Berufserfahrung in der Entwicklung skalierbarer Webanwendungen auf Unternehmensebene. Meine Reise in der Softwareentwicklung begann mit einem <strong>B.Tech von der JNTU Kakinada</strong> und entwickelte sich zu einer tiefen Spezialisierung im <strong>Angular-Ökosystem</strong>.",
+      "PARA_2": "Derzeit treibe ich bei <strong>Cognizant Technology Services</strong> Innovationen im Bereich <strong>Big Data Analytics</strong> voran. Ich entwickle umfassende Workflow-Engines und leistungsstarke Visualisierungstools, um komplexe Signaldaten aus <strong>Parquet-Dateien</strong> in interaktive Echtzeit-Liniendiagramme umzuwandeln.",
+      "PARA_3": "Ich setze mich stark für moderne Entwicklungsstandards ein und nutze <strong>NX Monorepos</strong> für architektonische Skalierbarkeit sowie <strong>SonarQube</strong> und moderne Test-Frameworks wie <strong>Vitest und Jest</strong>, um höchste Codequalität sicherzustellen. Mein Ziel ist es, die Möglichkeiten des Webs durch leistungsorientierte Entwicklung und intuitive UI/UX-Designs kontinuierlich zu erweitern.",
+      "STATS": {
+        "EXP": "Jahre Erfahrung",
+        "PROJECTS": "Wichtige Projekte",
+        "COMPANIES": "Unternehmen",
+        "VERSION": "Angular Version"
+      }
+    },
+    "SERVICES": {
+      "SUBTITLE": "Dienstleistungen",
+      "TITLE": "Code, der Probleme löst,\nein Produkt nach dem anderen.",
+      "CAN_DO": {
+        "TITLE": "Was ich für Sie tun kann",
+        "DESC": "Schnellere und bessere Produkte entwickeln, die Nutzer lieben.",
+        "LIST": [
+          "Designstrategie",
+          "Web- & Mobile-App-Design",
+          "Front-End-Entwicklung"
+        ]
+      },
+      "FLUENT": "Anwendungen, mit denen ich vertraut bin",
+      "EXPECT": {
+        "TITLE": "Was Sie erwarten können",
+        "CLEAN": "Sauber & Funktional",
+        "DEVICE": "Gerätefreundlich",
+        "MAINTAINABLE": "Wartbar"
+      }
+    },
+    "SECTIONS": {
+      "SKILLS": "Fähigkeiten",
+      "EXPERIENCE": "Erfahrung",
+      "TECH_STACK": "Technologie-Stack",
+      "PROJECTS": "Projekte",
+      "GITHUB": "GitHub-Beiträge"
+    }
+  }

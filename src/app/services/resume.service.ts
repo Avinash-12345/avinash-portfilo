@@ -8,7 +8,7 @@ import { Project, Experience, Education, Certification } from '../models/resume.
 export class ResumeService {
   // 1. Define the State using Signals
   readonly name = signal('Avinash Gara');
-  readonly role = signal('Senior Front-End Developer');
+  readonly role = signal('Senior Associate');
 
   readonly experienceYears = computed(() => {
     const startDate = new Date(2018, 0, 1); // Jan 2018
